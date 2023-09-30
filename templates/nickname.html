@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+		<div class="row d-flex justify-content-center mt-5">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="card py-3 px-2">
+					<p class="logo text-center mb-3 mt-2"><span>1</span>Game.chat</p>
+					<div class="division">
+						<div class="row">
+							<div class="col-3"><div class="line l"></div></div>
+							<div class="col-6"><span><small>Step 1: Enter your Nickname<br/>(letters and digits only)</small></span></div>
+							<div class="col-3"><div class="line r"></div></div>
+						</div>
+					</div>
+					<form class="myform" method="POST">
+						<div class="form-group">
+							<input name="nickname" type="text" class="form-control" placeholder="Your Nickname in the game">
+						</div>
+						<div class="form-alert">{{ alert }}</div>
+						<div class="form-group mt-3">
+							<button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Next</small></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+	<script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+	myLink.addEventListener('click', function(e) {
+	e.preventDefault();
+	});</script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+		<div class="row d-flex justify-content-center mt-5">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="card py-3 px-2">
+					<p class="logo text-center mb-3 mt-2"><span>1</span>Game.chat</p>
+					<div class="header-info text-center"><i class="far fa-user pr-2"></i> <span class="chat-user-nickname">{{ nickname }}</span><br /><small><a href="/change-nickname">change nickname</a></small></div>
+					<div class="division">
+						<div class="row">
+							<div class="col-3"><div class="line l"></div></div>
+							<div class="col-6"><span><small>Step 2: Enter PIN-code<br />or create a new chat</small></span></div>
+							<div class="col-3"><div class="line r"></div></div>
+						</div>
+					</div>
+					<form class="myform" id="pincodeform">
+						<div class="form-group">
+							<input name="pincode" type="text" class="form-control" placeholder="PIN-code (if you know)" value="{{ pincode }}">
+						</div>
+						<div class="form-alert">{{ alert }}</div>
+						<div class="form-group mt-3">
+							<button id="submit-pincode-button" type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Connect</small></button>
+							<a id="create-new-chat-link" href="/create-chat" class="btn btn-block btn-primary btn-lg" role="button"><small><i class="far fa-user pr-2"></i>Create a new chat</small></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+	<script type='text/javascript'>
+
+		function swap_action_buttons() {
+			let value = jQuery('input[name="pincode"]').val();
+			console.log(value);
+			if(value == '') {
+				jQuery('a#create-new-chat-link').show();
+				jQuery('button#submit-pincode-button').hide();
+			}
+			else {
+				jQuery('a#create-new-chat-link').hide();
+				jQuery('button#submit-pincode-button').show();
+			}
+		}
+
+		swap_action_buttons();
+
+		jQuery('input[name="pincode"]').on('input', function() {
+			swap_action_buttons();
+		});
+
+		jQuery("form#pincodeform").on("submit", function (e) {
+			e.preventDefault();
+            pincode = jQuery('input[name=pincode]').val();
+			if(pincode != '') {
+				window.location.href = "/chat/"+pincode;
+			}
+        });
+
+		jQuery('button#submit-pincode-button').on('click', function() {
+			pincode = jQuery('input[name=pincode]').val();
+			if(pincode != '') {
+				window.location.href = "/chat/"+pincode;
+			}
+		})
+	</script>
+{% endblock %}

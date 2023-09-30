@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>1Game.chat - the best practice if your game has no chat!</title>
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+	<link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<link href='{{ url_for('static', filename='css/style.css') }}' rel='stylesheet'>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body className='snippet-body'>
+    {% block content %}{% endblock %}
+	<div class="text-center footer">
+		1Game.chat was created by <a href="https://www.upwork.com/freelancers/andviktor" target="_blank">andviktor</a><br />Contact the author: <a href="mailto:and.viktor@gmail.com">and.viktor@gmail.com</a><br />The application was created for the personal use of the author, the author does not bear any responsibility for the information posted in this chat by other users.
+	</div>
+</body>
+</html>

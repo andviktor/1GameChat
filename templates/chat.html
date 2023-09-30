@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+	<input type="hidden" id="pincode" value="{{ pincode }}" />
+	<div class="container">
+		<div class="row d-flex justify-content-center mt-5">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="card py-3 px-2">
+					<p class="logo text-center mb-3 mt-2"><span>1</span>Game.chat</p>
+					<div class="header-info text-center"><i class="far fa-user pr-2"></i> <span class="chat-user-nickname">{{ nickname }}</span><br /><small><a href="/change-nickname">change nickname</a></small> <small><a href="#" onclick="location.reload();">change color</a></small></div>
+					<div class="text-center pincode">PIN-code: {{ pincode }}</div>
+					<div class="text-center chatlink">
+						Share link in your game lobby:<br />
+						<a href="#" class="copytoclipboard" copytoclipboard="https://dbdchat.com/chat/{{ pincode }}">https://dbdchat.com/chat/{{ pincode }}</a>
+						<button copytoclipboard="https://dbdchat.com/chat/{{ pincode }}" type="button" class="copytoclipboard btn btn-primary btn-sm"><i class="far fa-copy pr-2"></i>Copy link</button>
+						<div class="text-center copytoclipboard-notification">Link copied to clipboard!</div>
+					</div>
+					
+					<div class="division">
+						<div class="row">
+							<div class="col-3"><div class="line l"></div></div>
+							<div class="col-6"><span>Chat lifetime: <lifetime createdat="{{ createdat }}">loading...</lifetime></span></div>
+							<div class="col-3"><div class="line r"></div></div>
+						</div>
+					</div>
+					<form class="myform" id="send-message-form">
+						<div class="form-group">
+							<div id="chatmessages" class="form-control"></div>
+						</div>
+						<div class="input-group mb-3">
+							<input id="send-message-text" type="text" class="form-control" placeholder="Type a message...">
+							<div class="input-group-append">
+								<button id="send-message-button" pincode="{{ pincode }}" type="button" class="btn btn-block btn-primary btn"><small><i class="far fa-user pr-2"></i>Send</small></button>
+							</div>
+						</div>
+						<div class="form-alert">{{ alert }}</div>
+					</form>
+					<div class="division">
+						<div class="row">
+							<div class="col-3"><div class="line l"></div></div>
+							<div class="col-6"><a href="/create-chat" class="btn btn-block btn-primary btn-sm" role="button"><small><i class="far fa-user pr-2"></i>Create a new chat</small></a></div>
+							<div class="col-3"><div class="line r"></div></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+	<script type='text/javascript' src='{{ url_for('static', filename='js/send-message.js') }}'></script>
+	<script type='text/javascript' src='{{ url_for('static', filename='js/get-messages.js') }}'></script>
+	<script type='text/javascript'>
+		jQuery('.copytoclipboard').on('click', function() {
+			var element = jQuery(this);
+			text = element.attr('copytoclipboard');
+			navigator.clipboard.writeText(text);
+			jQuery('.copytoclipboard-notification').fadeIn(500).delay(3000).fadeOut(function() {
+				jQuery(this).clearQueue();
+			});
+		});
+	</script>
+{% endblock %}
