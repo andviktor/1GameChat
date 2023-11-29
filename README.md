@@ -1,7 +1,5 @@
 # Game Chat App
 
-**https://1game.chat/**
-
 ## Overview
 
 The Game Chat App is an interactive chat application built on the Flask framework. It is designed for gamers to communicate while playing games that lack a built-in chat system. The primary concept behind this application is to create temporary chats with a limited lifetime, specific to one game session. Gamers can also join existing chats using a PIN code.
